@@ -15,7 +15,7 @@
     href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@400;600;700&family=MedievalSharp&display=swap"
     rel="stylesheet">
     <style>
-        div{width: 500px;height: 500px;border-radius: 10px;margin-top: 300px;opacity: 20px;display: flex;flex-direction: column;justify-content: space-between;border: solid black;}
+        div{width: 400px;height: 400px;border-radius: 10px;margin-top: 300px;opacity: 20px;display: flex;flex-direction: column;justify-content: space-between;border: solid black;}
 
         img{width: 150px;height: 100px;}
         button{border: solid black;background-color: black;border-radius: 10px;}
@@ -26,7 +26,7 @@
     <nav class="backdrop-blur-md border-b border-cyan-500/40 px-3 py-4 flex justify-between items-center shadow-2xl">
     <img src="./ressource/logo.png" class="w-80 h-40">
     <ul
-      class="flex gap-20 text-xl font-['Cinzel_Decorative'] text-5xl font-black text-amber-400 tracking-widest drop-shadow-[0_0_12px_rgba(251,191,36,0.5)] tracking-widest">
+      class="flex gap-20 text-xl font-['Cinzel_Decorative'] text-5xl font-black text-amber-400 tracking-widest drop-shadow-[0_0_12px_rgba(251,191,36,0.5)] tracking-widest" id="pack">
       <li><a href="./main.html">Accuiel</a></li>
       <li><a>Cards</a></li>
       <li><a>Collection</a></li>
@@ -34,7 +34,7 @@
     </ul>
   </nav>
   </header>
-  <main class="flex justify-center content-center gap-20 border-cyan-500 text-center">
+  <main class="grid grid-cols-1 justify-center content-center gap-20 border-cyan-500 text-center md:grid-cols-2 grid-row-2 lg:grid-cols-4 gap-20">
     <div style="background: rgba(95, 108, 77, 0.682)">
         <span class="font-['Cinzel_Decorative'] text-3xl"> LEGENDARY PACK</span>
         <button class="font-['Cinzel_Decorative'] text-3xl"> PICK </button>
@@ -47,6 +47,10 @@
         <span class="font-['Cinzel_Decorative'] text-3xl"> BRONZE PACK </span>
         <button class="font-['Cinzel_Decorative'] text-3xl"> PICK </button>
 
+    </div>
+    <div style="background-color: rgba(22, 22, 173, 0.322);">
+        <span class="font-['Cinzel_Decorative'] text-3xl"> SPELLS PACK </span>
+        <button class="font-['Cinzel_Decorative'] text-3xl"> PICK </button>
     </div>
   </main>
     

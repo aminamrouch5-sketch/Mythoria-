@@ -15,15 +15,21 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@400;600;700&family=MedievalSharp&display=swap"
     rel="stylesheet">
+    <style>
+      button{
+        width: 250px;
+        height: 100px;
+      }
+    </style>
 </head>
 
-<body style="background-image: url(./ressource/bg.png);background-repeat: no-repeat;background-size: cover;height: 1100px;">
+<body style="background-image: url(./ressource/bg.png);background-repeat: no-repeat;background-size: cover;height: 1400px;">
   <nav class="backdrop-blur-md border-b border-cyan-500/40 px-6 py-4 flex justify-between items-center shadow-2xl">
     <img src="./ressource/logo.png" class="w-80 h-40">
     <ul
       class="flex gap-20 text-xl font-['Cinzel_Decorative'] text-5xl font-black text-amber-400 tracking-widest drop-shadow-[0_0_12px_rgba(251,191,36,0.5)] tracking-widest">
       <li><a>Cards</a></li>
-      <li><a>Collection</a></li>
+      <li><a href="./">Collection</a></li>
       <li><a href="./shop.html">Shop</a></li>
       <li><a href="./boosters.html">Boosters</a></li>
     </ul>
@@ -40,23 +46,19 @@
       Dans le silence lourd du sanctuaire abandonné, seul le crépitement d'une lanterne de cuivre brisait l'obscurité.
       Valen, un traqueur d'artefacts aux mains balfrées, s'agenouilla devant l'autel de pierre noire.  
     </p>
+    <div class="flex flex-col font-['Cinzel_Decorative'] text-2xl font-black text-amber-900  sm:flex-row gap-40  " style="margin-top: 100px;">
+      <button class="rounded-full bg-cyan-500"><a href="./boosters.html">Decouvrir mon boosters</a></button>
+      <button class="rounded-full bg-cyan-500"><a href="./collection.html">Decouvrir mon collection</a></button>
+    </div>
     <h2 class="text-5xl font-['Cinzel'] font-bold border-hidden text-amber-400" style="margin-top: 150px;"> LEGENDARY CARDS </h2>
     <div class="flex gap-20 justify-center" style="width: 500px;height: 400px;margin-top: 20px;">
       <img src="./ressource/dark/legendarymonster1.jpg">
       <img src="./ressource/light/lightlegendary.jpg">
       <img src="./ressource/light/light.jpg">
+      </div>
     </div>
   </div>
-
-
-
-
-
-
-
-
-  </div>
-  </div>
+</div>
 </body>
 
 </html>

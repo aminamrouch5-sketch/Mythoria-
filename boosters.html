@@ -15,13 +15,14 @@
     href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@400;600;700&family=MedievalSharp&display=swap"
     rel="stylesheet">
     <style>
-        div{width: 400px;height: 400px;border-radius: 10px;margin-top: 300px;opacity: 20px;display: flex;flex-direction: column;justify-content: space-between;border: solid black;}
-
+        .divboster{width: 400px;height: 400px;border-radius: 10px;margin-top: 300px;opacity: 20px;display: flex;flex-direction: column;justify-content: space-between;border: solid black;}
         img{width: 150px;height: 100px;}
         button{border: solid black;background-color: black;border-radius: 10px;}
+        div li{width: 400px;height: 400px;border-radius: 10px;border: solid black;}
+        
     </style>
 </head>
-<body style="background-image: url(./ressource/bg.png);height: 1200px;background-repeat: no-repeat;background-size: cover">
+<body style="background-image: url(./ressource/bg.png);height: 1600px;background-repeat: no-repeat;background-size: cover;justify-content: space-between;align-content: center;">
     <header>
     <nav class="backdrop-blur-md border-b border-cyan-500/40 px-3 py-4 flex justify-between items-center shadow-2xl">
     <img src="./ressource/logo.png" class="w-80 h-40">
@@ -35,25 +36,35 @@
     </ul>
   </nav>
   </header>
-  <main class="grid grid-cols-1 justify-center content-center gap-20 border-cyan-500 text-center md:grid-cols-2 grid-row-2 lg:grid-cols-4 gap-20" id="booster">
-    <div style="background: rgba(95, 108, 77, 0.682)">
+  <section class="grid grid-cols-1 justify-center content-center gap-20 border-cyan-500 text-center md:grid-cols-2 grid-row-2 lg:grid-cols-4 gap-20" id="booster">
+    <div style="background: rgba(95, 108, 77, 0.682)" class="divboster">
         <span class="font-['Cinzel_Decorative'] text-3xl"> LEGENDARY PACK</span>
         <button class="font-['Cinzel_Decorative'] text-3xl" id="legendary"> PICK </button>
     </div>
-    <div style="background: rgba(195, 195, 204, 0.5)">
+    <div style="background: rgba(195, 195, 204, 0.5)"  class="divboster">
         <span class="font-['Cinzel_Decorative'] text-3xl"> EPIC PACK </span>
         <button class="font-['Cinzel_Decorative'] text-3xl" id="epic"> PICK </button>
     </div>
-    <div style="background: rgba(92, 94, 26, 0.5)">
+    <div style="background: rgba(92, 94, 26, 0.5)"  class="divboster">
         <span class="font-['Cinzel_Decorative'] text-3xl"> BRONZE PACK </span>
         <button class="font-['Cinzel_Decorative'] text-3xl" id="bronze"> PICK </button>
 
     </div>
-    <div style="background-color: rgba(22, 22, 173, 0.322);">
+    <div style="background-color: rgba(22, 22, 173, 0.322);"  class="divboster">
         <span class="font-['Cinzel_Decorative'] text-3xl"> SPELLS PACK </span>
         <button class="font-['Cinzel_Decorative'] text-3xl" id="spells"> PICK </button>
     </div>
-  </main>
+      </section>
+      <section style="background-image:(url('./ressource/ss.jpg'));background-size: cover;">
+    <div class="w-full text-center backdrop-blur-md border-b border-cyan-500/40 px-3 py-4 flex justify-between items-center shadow-2xl divboster">
+      <span class="font-['Cinzel_Decorative'] text-xl text-center font-gold font-black text-amber-300 tracking-widest drop-shadow-[0_0_12px_rgba(251,191,36,0.5)] tracking-widest"> Panier Store </span>
+      <ul class="gap-10 grid grid-cols-1 md:grid-cols-3 overflow-y-scroll w-46 " id="umenu">
+      </ul>
+
+    </div>
+    </section>
+
+
     <script type="module" src="./script.js" defer></script>
 </body>
 </html>

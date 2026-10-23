@@ -4,7 +4,7 @@ const basket = document.querySelector('#umenu') // from basket page
 console.log("hi " )
 console.log("hi " + basket)
 let totalpurashed = 0
-boostermenu.addEventListener('click',(e)=>{
+boostermenu.addEventListener('click',(e)=>{                    // AJOUTE UN BOUSTER SCRIPT 
     e.preventDefault()
     let but=e.target.closest("button").getAttribute('id')
     console.log(but)
@@ -64,4 +64,12 @@ boostermenu.addEventListener('click',(e)=>{
 
 
     }
-})
+})                                                                          // SUPRIMIER UN BOOSTER
+
+basket.addEventListener('click',(e)=>{
+    e.preventDefault();
+    let but = e.target.closest('button');let menu = ((but.parentElement).parentNode).parentElement; // remove a
+    menu.remove()
+}
+)
+

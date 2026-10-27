@@ -1,19 +1,13 @@
 import { monsters } from './data.js';
 import {spells} from './data.js';
 import { boosterpacks } from './data.js';
-console.log(spells)
-console.log(monsters)
-console.log(boosterpacks)
 const body = document.querySelector('body')
 const boostermenu = document.querySelector('#booster') // from booster page
 const basket = document.querySelector('#umenu') // from basket page
 const deleteButton = document.querySelectorAll('.delete')
 let totalpurashed = 0
 const tickets = document.querySelector('#ticket-vendu')
-const myCards = {
-    "spells":[],
-    "heros":[]
-        }
+const myCards = JSON.parse(localStorage.getItem("myCards")) || []
 const statusCards = {
             "bronze":0,
             "epic":0,
@@ -29,7 +23,7 @@ function createPackRes(res){
                                  <p> you got a ${res.isLegendary} pack !!! </p>
                                  <div class="flex text-lg">
                                  <span>Attack   : ${res.Properties.attack}</li>
-                                 <span>Deffence : ${res.Properties.attack}</li>
+                                 <span>Deffence : ${res.Properties.def}</li>
                                  </div>
                                 <button class="exit"> PICK </button>
                                  </div>`
@@ -39,6 +33,8 @@ function createPackRes(res){
                         let bt = e.target.closest('button')
                         if(bt.getAttribute('class')=="exit"){
                             temp.remove()
+                            totalpurashed--
+
                         }
                 }
             ) }
@@ -59,6 +55,7 @@ function spellPack(res){
                         let bt = e.target.closest('button')
                         if(bt.getAttribute('class')=="exit"){
                             temp.remove()
+                            totalpurashed--
                         }
                 }
             )
@@ -82,7 +79,6 @@ function CounterCards(arr,arr2){
     })
 }
 CounterCards(monsters,spells)
-console.log(statusCards)
 
 function getRandomInt(min, max) { // random number function
     return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -117,10 +113,7 @@ monsters.forEach(element => {
 spells.forEach(element => {
     spellcards.push(element)
 })        
-    console.log(bronzecards)
-    console.log(epiccards)
-    console.log(legendarycards)
-    console.log(spellcards)
+
 
 
 
@@ -149,6 +142,7 @@ boostermenu.addEventListener('click',(e)=>{                    // AJOUTE UN BOUS
         basket.appendChild(il)
         totalpurashed++
         tickets.textContent=` Tickets Vendu : ${totalpurashed}`
+        
     }
     else if(but=="epic"){
         let il = document.createElement('li')
@@ -205,11 +199,13 @@ basket.addEventListener('click',(e)=>{
     
     let but = e.target.closest('button');let menu = ((but.parentElement).parentNode).parentElement;
      if (but.classList.contains("delete")){
-            RemovePack(menu,totalpurashed)
+            menu.remove()
+            totalpurashed--
+            tickets.textContent=` Tickets Vendu : ${totalpurashed}`
+
     }
     else{
          let but = e.target.closest("button").getAttribute('id');
-            console.log(but)
             if (but=="bronze"){
                 let pack = []
                 let duplicated = [];
@@ -222,14 +218,15 @@ basket.addEventListener('click',(e)=>{
                     break
                     }
                 }
-                console.log(pack);
                 pack.push(epiccards[getRandomInt(1,statusCards.epic-1)])
                 let res = pack[getRandomInt(0,10)];
+                myCards.push(res)
                 RemovePack(menu)
                 totalpurashed--
                 tickets.textContent=` Tickets Vendu : ${totalpurashed}`
                 duplicated.length=0;
                 createPackRes(res)  
+                localStorage.setItem('myCards', JSON.stringify(myCards));
                
             }
             else if(but=="legendary"){
@@ -269,8 +266,9 @@ basket.addEventListener('click',(e)=>{
                 RemovePack(menu)
                 totalpurashed--
                 tickets.textContent=` Tickets Vendu : ${totalpurashed}`
+                myCards.push(res)
                 createPackRes(res)  
-               
+                localStorage.setItem('myCards', JSON.stringify(myCards));
             }
             else if(but=="epic"){
                 let pack = [];
@@ -293,11 +291,14 @@ basket.addEventListener('click',(e)=>{
                             break
                     }
                 }
-                let res = packs[getRandomInt(0,10)]
+                let res = pack[getRandomInt(0,10)]
                 RemovePack(menu)
                 totalpurashed--
+                myCards.push(res)
                 tickets.textContent=` Tickets Vendu : ${totalpurashed}`
-                createPackRes(res)  
+                createPackRes(res)
+                localStorage.setItem('myCards', JSON.stringify(myCards));
+  
                 
             }
             else if(but=="spell"){
@@ -312,17 +313,13 @@ basket.addEventListener('click',(e)=>{
                             break
                     }
             }
-                console.log(pack)
+                (pack)
                 let res = pack[getRandomInt(0,10)]
                 RemovePack(menu)
                 totalpurashed--
                 tickets.textContent=` Tickets Vendu : ${totalpurashed}`
+                myCards.push(res)
                 spellPack(res);
-        }
-
-
-
-
-   
-           
+                localStorage.setItem('myCards', JSON.stringify(myCards));
+        }          
     }})

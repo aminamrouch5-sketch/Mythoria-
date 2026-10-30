@@ -82,6 +82,30 @@ collectionmenu.addEventListener('click', (e) => {
 });
 
 collectionmenu.addEventListener('click', (e) => {
+    if (favorites.length>=20)
+            {
+                let temp = document.createElement('div')
+                temp.innerHTML=`<div class="font-['Cinzel_Decorative'] text-3xl fixed flex flex-col  top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white p-6 rounded-xl shadow-lg w-[500px] h-[500px] text-center items-center justify-between" style="background: rgba(95, 108, 77, 0.682)">
+                                 <span>ATTENTION !!</span>
+                    
+                                 <p> YOU HAVE MAX 20 CARD TO ADD AS FAV </p>
+                                 <div class="flex text-lg">
+                              
+                                 </div>
+                                <button class="exit"> I UNDERSTAND </button>
+                                 </div>`
+                body.appendChild(temp)
+                temp.addEventListener('click',(e)=>{
+                        e.preventDefault()
+                        let bt = e.target.closest('button')
+                        if(bt.getAttribute('class')=="exit"){
+                            temp.remove()
+                            totalpurashed--
+                        }
+                    }
+                )
+                return
+            }
     if (e.target.tagName === 'BUTTON' && e.target.className.startsWith('id-')) {
         // Extract the card ID from the button's class name (e.g., "id-0" -> 0)
         const cardId = parseInt(e.target.className.replace('id-', ''));

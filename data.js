@@ -386,4 +386,9 @@ export const spells = [
     "story": "Distorts temporal flow around a designated zone, causing enemies to move in sluggish slow motion. This grants the caster an overwhelming tactical advantage to execute multi-hit combos."
   }
 ]
-export const boosterpacks={"bronze":500,"epic":2500,"legendary":5000,"spells":1500}
+export const boosterpacks=
+  {"bronze":500,
+   "epic":2500,
+   "legendary":5000,
+   "spells":1500
+  }

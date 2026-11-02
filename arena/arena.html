@@ -61,13 +61,11 @@
         </div>
     </div>
     </main>
-     <div class="flex justify-between game" style="width: 1020px;height: 2000px;margin: auto;margin-top: 100px;display: none;">
+     <div class="flex justify-between" id="game" style="width: 1020px;height: 2000px;margin: auto;margin-top: 100px">
         <div style="background: rgba(22, 22, 36, 0.5);height: 1050px;width: 800px;border-radius: 20px;" class="card-m flex flex-col justify-between py-[40px] px-[40px]">
             <div class="flex flex-col">
                 <ul class="grid grid-cols-5 gap-4">
-                    <li>                       
-                        <img src="../ressource/dark/dark2.jpg">
-                    </li>
+                    <li></li>
                     <li></li>
                     <li></li>
                     <li></li>
@@ -80,68 +78,68 @@
                 <!-- Grille 1 -->
                 <div class="grid grid-cols-5 gap-4">
                     <div class="arena-cell">
-                    <img src="../ressource/light/epical.jpg">
+                    
                     </div>
                     <div class="arena-cell">
 
-                    <img src="../ressource/light/epical.jpg"></div>
+                    </div>
                     <div class="arena-cell">
 
-                    <img src="../ressource/light/epical.jpg"></div>
+                    </div>
                     <div class="arena-cell">
 
-                    <img src="../ressource/light/epical.jpg"></div>
+                    </div>
                     <div class="arena-cell">
 
-                    <img src="../ressource/light/epical.jpg"></div>
+                    </div>
                     <div class="arena-cell">
 
-                    <img src="../ressource/light/epical.jpg"></div>
+                    </div>
                     <div class="arena-cell">
 
-                    <img src="../ressource/light/epical.jpg"></div>
+                    </div>
                     <div class="arena-cell">
 
-                    <img src="../ressource/light/epical.jpg"></div>
+                    </div>
                     <div class="arena-cell">
 
-                    <img src="../ressource/light/epical.jpg"></div>
+                    </div>
                     <div class="arena-cell">
 
-                    <img src="../ressource/light/epical.jpg"></div>
+                    </div>
                 </div>
                 
                 <div class="grid grid-cols-5 gap-4 arena-m">
                     <div class="arena-cell">
 
-                    <img src="../ressource/light/epical.jpg"></div>
+                    </div>
                     <div class="arena-cell">
 
-                    <img src="../ressource/light/epical.jpg"></div>
+                    </div>
                     <div class="arena-cell">
 
-                    <img src="../ressource/light/epical.jpg"></div>
+                    </div>
+                    <div class="arena-cell">b
+
+                    </div>
                     <div class="arena-cell">
 
-                    <img src="../ressource/light/epical.jpg"></div>
+                    </div>
                     <div class="arena-cell">
 
-                    <img src="../ressource/light/epical.jpg"></div>
+                    </div>
                     <div class="arena-cell">
 
-                    <img src="../ressource/light/epical.jpg"></div>
+                    </div>
                     <div class="arena-cell">
 
-                    <img src="../ressource/light/epical.jpg"></div>
+                    </div>
                     <div class="arena-cell">
 
-                    <img src="../ressource/light/epical.jpg"></div>
+                    </div>
                     <div class="arena-cell">
 
-                    <img src="../ressource/light/epical.jpg"></div>
-                    <div class="arena-cell">
-
-                    <img src="../ressource/light/epical.jpg"></div>
+                    </div>
                 </div>
             </div>
         
@@ -156,23 +154,21 @@
             </div>
             
         </div>
-        <div style="background: rgba(39, 39, 74, 0.5);height: 1000px;width: 200px;border-radius: 20px;" class="flex flex-col justify-between items-center py-12">
-            <div style="height: 200px;width: 300px;" class="text-center font-['Cinzel_Decorative'] text-3xl text-xl">
+        <div style="background: rgba(39, 39, 74, 0.5);height: 1000px;width: 200px;border-radius: 20px;" class="flex flex-col justify-between items-center py-12" id="drag-con">
+            <div style="height: 200px;width: 300px;" class="text-center font-['Cinzel_Decorative'] text-3xl text-xl" id="p2">
                 <img src="./assests/darkside.png" >
                 <span>CARD DRAG</span>
             </div>
                 
-            <div style="height: 200px;width: 300px;" class="text-center font-['Cinzel_Decorative'] text-3xl text-xl text-amber-400">
+            <div style="height: 200px;width: 300px;" class="text-center font-['Cinzel_Decorative'] text-3xl text-xl text-amber-400" id="p1">
                  <img src="./assests/lightside.png" class="w-full h-full">
                  <span>CARD DRAG</span>
             </div>
         </div>
     </div>
 
-    <script>
-      $('button').click(()=>{
-        $('div').hide()
-      })
-    </script>
+    <script src="./js/start.js" defer></script>
+    <script src="./js/game.js" defer></script>
+    <script src="./js/cards.js" defer></script>
 </body>
 </html>

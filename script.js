@@ -8,6 +8,7 @@ const deleteButton = document.querySelectorAll('.delete')
 let totalpurashed = 0
 const tickets = document.querySelector('#ticket-vendu')
 const myCards = JSON.parse(localStorage.getItem("myCards")) || []
+const mySpells = JSON.parse(localStorage.getItem("mySpells")) || []
 const statusCards = {
             "bronze":0,
             "epic":0,
@@ -179,7 +180,7 @@ boostermenu.addEventListener('click',(e)=>{                    // AJOUTE UN BOUS
             il.innerHTML=`<li class="flex flex-col justify-between" style="background-color: rgba(22, 22, 173, 0.322);">
                         <span class="font-['Cinzel_Decorative'] text-3xl"> SPELLS PACK </span>
                         <div class="flex flex-col justify-between">
-                            <button class="font-['Cinzel_Decorative'] text-3xl add" id="spell"> PICK </button>
+                            <button class="font-['Cinzel_Decorative'] text-3xl add" id="spells"> PICK </button>
                             <button class="font-['Cinzel_Decorative'] text-3xl delete" name="spells" id="cart-${totalpurashed}"> SUPPREMIER </button>
                         </div>
 
@@ -244,7 +245,7 @@ basket.addEventListener('click',(e)=>{
                 for(let i=0;i<5;i++){
                     while(true){
                         let s = getRandomInt(1,statusCards.epic-1)
-                        if(!duplicated.includes[s])
+                        if(!duplicated.includes(s))
                             duplicated.push(s)
                             pack.push(epiccards[s])
                             break
@@ -253,7 +254,7 @@ basket.addEventListener('click',(e)=>{
                 for(let i=0;i<3;i++){
                     while(true){
                         let s = getRandomInt(1,statusCards.legendary-1)
-                            if(!duplicated.includes[s])
+                            if(!duplicated.includes(s))
                                 duplicated.push(s)
                                 pack.push(legendarycards[s])
                                 break
@@ -285,7 +286,7 @@ basket.addEventListener('click',(e)=>{
                 for(let i=0;i<5;i++){
                     while(true){
                         let s = getRandomInt(1,statusCards.epic-1)
-                        if(!duplicated.includes[s])
+                        if(!duplicated.includes(s))
                             duplicated.push(s)
                             pack.push(epiccards[s])
                             break
@@ -301,25 +302,41 @@ basket.addEventListener('click',(e)=>{
   
                 
             }
-            else if(but=="spell"){
+            else if(but=="spells"){
                     let pack = [];
                     let duplicated = [];
                 for(let i=0;i<8;i++){
                     while(true){
                         let s = getRandomInt(1,statusCards.spells-1)
-                        if(!duplicated.includes[s])
+                        if(!duplicated.includes(s))
                             duplicated.push(s)
                             pack.push(spellcards[s])
                             break
                     }
             }
-                (pack)
-                let res = pack[getRandomInt(0,10)]
-                RemovePack(menu)
+            
+                let res = pack[getRandomInt(0,6)]
+                menu.remove()
                 totalpurashed--
                 tickets.textContent=` Tickets Vendu : ${totalpurashed}`
-                myCards.push(res)
-                spellPack(res);
-                localStorage.setItem('myCards', JSON.stringify(myCards));
-        }          
+                mySpells.push(res)
+                let temp = document.createElement('div')
+                temp.innerHTML=`<div class="font-['Cinzel_Decorative'] text-3xl fixed flex flex-col  top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white p-6 rounded-xl shadow-lg w-[500px] h-[500px] text-center items-center justify-between" style="background: rgba(95, 108, 77, 0.682)">
+                                 <span>Congralutions</span>
+                                 <img src="${res.img}">
+                                 <p> you got a spells pack !!! </p>
+                                 <div class="flex text-lg">
+                                 <span>Name   : ${res.name}</li>
+                                 </div>
+                                <button class="exit"> PICK </button>
+                                 </div>`
+                body.appendChild(temp)
+                temp.addEventListener('click',(e)=>{
+                        e.preventDefault()
+                        let bt = e.target.closest('button')
+                        if(bt.getAttribute('class')=="exit"){
+                            temp.remove()
+                localStorage.setItem('mySpells',JSON.stringify(mySpells))
+            }}
+)}  
     }})

@@ -8,7 +8,9 @@ const gamewindow = document.getElementById('game')
 function getRandomInt(min, max) { // random number function
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
-
+function GenerateCards(){
+    
+}
 
 
 gamewindow.addEventListener('click',(e)=>{
@@ -20,7 +22,7 @@ gamewindow.addEventListener('click',(e)=>{
     return
    }else{
         const duplicated = []
-        for(let i=0;i<=5;i++){
+        for(let i=0;i<5;i++){
             while(true){
             let index = getRandomInt(1,mycards.length-1)
         if (!duplicated.includes(index)){
@@ -32,7 +34,7 @@ gamewindow.addEventListener('click',(e)=>{
 }
 else{
     const duplicated = []
-        for(let i=0;i<=5;i++){
+        for(let i=0;i<5;i++){
             while(true){
             let index = getRandomInt(1,cards.length-1)
         if (!duplicated.includes(index)){

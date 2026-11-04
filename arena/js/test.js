@@ -1,0 +1,1 @@
+const genereate = function(a){console.log(a)}

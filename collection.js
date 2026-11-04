@@ -6,6 +6,7 @@ let favorites = JSON.parse(localStorage.getItem('favoriteCards')) || [];
 const myspells = JSON.parse(localStorage.getItem('mySpells')) || []
 console.log(myspells)
 if (mycards){
+    
 for(let i of mycards){
 
     if(i.isLegendary == "legendary"){
@@ -18,7 +19,7 @@ for(let i of mycards){
                             <span>DEFF : ${i.Properties.def}</span>
                         </div>
                          <div class="flex justify-between">
-                        <span> EPIC CARD</span>
+                        <span> LEGENDARY CARD</span>
                         <button style="border:solid yellow" class="id-${i.id}">Add My Fav</button>
                         </div>
                         </li>`;
@@ -58,7 +59,7 @@ for(let i of mycards){
                             <span>DEFF : ${i.Properties.def}</span>
                         </div>
                         <div class="flex justify-between">
-                        <span> EPIC CARD</span>
+                        <span> BRONZE CARD</span>
                         <button style="border:solid yellow" class="id-${i.id}">Add My Fav</button>
                         </div>
                         </li>`;
@@ -97,7 +98,7 @@ filtermenu.addEventListener('click',(e)=>{
                             <span>DEFF : ${i.Properties.def}</span>
                         </div>
                          <div class="flex justify-between">
-                        <span> EPIC CARD</span>
+                        <span> LEGENDARY CARD</span>
                         <button style="border:solid yellow" class="id-${i.id}">Add My Fav</button>
                         </div>
                         </li>`;
@@ -139,7 +140,7 @@ for(let i of mycards){
                             <span>DEFF : ${i.Properties.def}</span>
                         </div>
                         <div class="flex justify-between">
-                        <span> EPIC CARD</span>
+                        <span> BRONZE CARD</span>
                         <button style="border:solid yellow" class="id-${i.id}">Add My Fav</button>
                         </div>
                         </li>`;
@@ -151,8 +152,24 @@ for(let i of mycards){
         for(const i of mycards){
         
         if(i.Type=="dark"){
+            if(i.isLegendary=="legendary"){
         let card = document.createElement('li');
-        card.innerHTML = `<li style="background: rgba(95, 108, 77, 0.682)" class="items-center content-center justify-center">
+        card.innerHTML = `<li style="background:rgba(95, 108, 77, 0.682)" class="items-center content-center justify-center">
+                        <span> ${i.Name}</span>
+                        <img src="${i.img}" style="margin: auto;padding: 20px;">
+                        <div class="flex justify-between">
+                            <span>ATTACK :${i.Properties.attack}</span>
+                            <span>DEFF : ${i.Properties.def}</span>
+                        </div>
+                         <div class="flex justify-between">
+                        <span> LEGENDARY CARD</span>
+                        <button style="border:solid yellow" class="id-${i.id}">Add My Fav</button>
+                        </div>
+                        </li>`;
+        collectionmenu.appendChild(card);
+            }else if(i.isLegendary == "epic"){
+            let card = document.createElement('li');
+            card.innerHTML = `<li style="background: rgba(195, 195, 204, 0.5)" class="items-center content-center justify-center">
                         <span> ${i.Name}</span>
                         <img src="${i.img}" style="margin: auto;padding: 20px;">
                         <div class="flex justify-between">
@@ -164,15 +181,10 @@ for(let i of mycards){
                         <button style="border:solid yellow" class="id-${i.id}">Add My Fav</button>
                         </div>
                         </li>`;
-        collectionmenu.appendChild(card);
-        }}
-
-    }else if (list== "light"){
-       
-        for(const i of mycards){
-            if(i.Type=="light"){
-        let card = document.createElement('li');
-        card.innerHTML = `<li style="background: rgba(195, 195, 204, 0.5)" class="items-center content-center justify-center">
+            collectionmenu.appendChild(card);
+        }else if(i.isLegendary=="bronze"){
+            let card = document.createElement('li');
+        card.innerHTML = `<li style="background: rgba(95, 108, 77, 0.682)" class="items-center content-center justify-center">
                         <span> ${i.Name}</span>
                         <img src="${i.img}" style="margin: auto;padding: 20px;">
                         <div class="flex justify-between">
@@ -180,12 +192,66 @@ for(let i of mycards){
                             <span>DEFF : ${i.Properties.def}</span>
                         </div>
                         <div class="flex justify-between">
+                        <span> BRONZE CARD</span>
+                        <button style="border:solid yellow" class="id-${i.id}">Add My Fav</button>
+                        </div>
+                        </li>`;
+        collectionmenu.appendChild(card);
+        }
+        
+    }
+}
+
+    }else if (list== "light"){
+        
+        for(const i of mycards){
+            if(i.Type=="light"){
+                if(i.isLegendary=="legendary"){
+        let card = document.createElement('li');
+        card.innerHTML = `<li style="background:rgba(95, 108, 77, 0.682)" class="items-center content-center justify-center">
+                        <span> ${i.Name}</span>
+                        <img src="${i.img}" style="margin: auto;padding: 20px;">
+                        <div class="flex justify-between">
+                            <span>ATTACK :${i.Properties.attack}</span>
+                            <span>DEFF : ${i.Properties.def}</span>
+                        </div>
+                         <div class="flex justify-between">
+                        <span> LEGENDARY CARD</span>
+                        <button style="border:solid yellow" class="id-${i.id}">Add My Fav</button>
+                        </div>
+                        </li>`;
+        collectionmenu.appendChild(card);
+            }else if(i.isLegendary == "epic"){
+            let card = document.createElement('li');
+            card.innerHTML = `<li style="background: rgba(195, 195, 204, 0.5)" class="items-center content-center justify-center">
+                        <span> ${i.Name}</span>
+                        <img src="${i.img}" style="margin: auto;padding: 20px;">
+                        <div class="flex justify-between">
+                            <span>ATTACK :${i.Properties.attack}</span>
+                            <span>DEFF : ${i.Properties.def}</span>
+                        </div>
+                         <div class="flex justify-between">
                         <span> EPIC CARD</span>
                         <button style="border:solid yellow" class="id-${i.id}">Add My Fav</button>
                         </div>
                         </li>`;
-        
+            collectionmenu.appendChild(card);
+        }else if(i.isLegendary=="bronze"){
+            let card = document.createElement('li');
+        card.innerHTML = `<li style="background: rgba(95, 108, 77, 0.682)" class="items-center content-center justify-center">
+                        <span> ${i.Name}</span>
+                        <img src="${i.img}" style="margin: auto;padding: 20px;">
+                        <div class="flex justify-between">
+                            <span>ATTACK :${i.Properties.attack}</span>
+                            <span>DEFF : ${i.Properties.def}</span>
+                        </div>
+                        <div class="flex justify-between">
+                        <span> BRONZE CARD</span>
+                        <button style="border:solid yellow" class="id-${i.id}">Add My Fav</button>
+                        </div>
+                        </li>`;
         collectionmenu.appendChild(card);
+        }
         }}
 
     }else if(list=="spells"){

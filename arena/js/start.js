@@ -1,13 +1,20 @@
+import { GenerateCards,getRandomInt } from './cards.js'
 const startmenu = document.querySelector('#start-menu')
 const main = document.querySelector('main')
 const game = document.querySelector('#game')
 const dragcon = document.querySelector('#drag-con')
 const p1 = document.querySelector('#p1 img');
 const p2 = document.querySelector('#p2 img')
-game.style.display = "none"
+const currentCards = [];
+const mycards = JSON.parse(localStorage.getItem('myCards')) || []
+const favcards = JSON.parse(localStorage.getItem('favoriteCards')) || []
+
+
+game.style.display = "none";
 startmenu.addEventListener('click',(e)=>{
     e.preventDefault();
-    let but = e.target.closest('button');
+    if(!e.target.closest('button')) return;
+    let but = e.target.closest('button')
     if (but.getAttribute('id')=="start"){
         startmenu.style.display="none";
         let choosemenu = document.createElement('div');
@@ -23,7 +30,7 @@ startmenu.addEventListener('click',(e)=>{
                     <span> Him</span>
                     <img src="./assests/Eye.jpg" style="width: 150px;height: 250px;">
                     <span> LIGHT SIDE </span> 
-                    </div>
+                    </div>8iijkkkkk
                     <div class="flex flex-col gap-5">
                     <span> You</span>
                     <img src="./assests/Elegant Fantasy Playing Card Background with Magic Border Design.jpg" style="width: 150px;height: 250px;">
@@ -32,7 +39,7 @@ startmenu.addEventListener('click',(e)=>{
 
                 </div>
             </div>
-            <button style="border:solid white;background-color:rgba(50, 29, 29, 0.47)"> start </button>
+            <button style="border:solid white;background-color:rgba(50, 29, 29, 0.47)" id="side-start"> start </button>
             
        </div>`
         p1.src=`./assests/darkside.png`
@@ -57,7 +64,7 @@ startmenu.addEventListener('click',(e)=>{
                     </div>
                 </div>
             </div>
-            <button style="border:solid white;background-color:rgba(50, 29, 29, 0.47)"> start </button>
+            <button style="border:solid white;background-color:rgba(50, 29, 29, 0.47)" id="side-start"> start </button>
             
        </div>`
 
@@ -68,9 +75,24 @@ startmenu.addEventListener('click',(e)=>{
         const sidemenu = document.getElementById('side-m')
         sidemenu.addEventListener('click',(e)=>{
             e.preventDefault()
-            const but = e.target.closest('button')
-            choosemenu.style.display = "none";
-            game.style.display = "";
+            const but = document.querySelector("#side-start")
+            if(!but) return;
+            but.addEventListener('click', (e)=>{
+                sidemenu.remove()
+                game.style.display="";
+                if(favcards.length<5){
+                    if(mycards.length<5){
+                        alert("sorry you need more then 5 cards")
+                    }
+                    else{
+                        GenerateCards(mycards,currentCards,5)
+                    }
+                }
+                else{
+                    GenerateCards(favcards,currentCards,5)
+                }
+                console.log(currentCards)
+            })
            
 
 
@@ -95,9 +117,7 @@ startmenu.addEventListener('click',(e)=>{
 
 
 
-function getRandomInt(min, max) { // random number function
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-}
+
 
 
 

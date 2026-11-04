@@ -34,7 +34,7 @@ function createPackRes(res){
                         let bt = e.target.closest('button')
                         if(bt.getAttribute('class')=="exit"){
                             temp.remove()
-                            totalpurashed--
+                            
 
                         }
                 }
@@ -294,10 +294,31 @@ basket.addEventListener('click',(e)=>{
                 }
                 let res = pack[getRandomInt(0,10)]
                 RemovePack(menu)
-                totalpurashed--
                 myCards.push(res)
+                totalpurashed--
                 tickets.textContent=` Tickets Vendu : ${totalpurashed}`
-                createPackRes(res)
+                let temp = document.createElement('div')
+                temp.innerHTML=`<div class="font-['Cinzel_Decorative'] text-3xl fixed flex flex-col  top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white p-6 rounded-xl shadow-lg w-[500px] h-[500px] text-center items-center justify-between" style="background: rgba(95, 108, 77, 0.682)">
+                                 <span>Congralutions</span>
+                                 <img src="${res.img}">
+                                 <p> you got a ${res.isLegendary} pack !!! </p>
+                                 <div class="flex text-lg">
+                                 <span>Attack   : ${res.Properties.attack}</li>
+                                 <span>Deffence : ${res.Properties.def}</li>
+                                 </div>
+                                <button class="exit"> PICK </button>
+                                 </div>`
+                body.appendChild(temp)
+                temp.addEventListener('click',(e)=>{
+                        e.preventDefault()
+                        let bt = e.target.closest('button')
+                        if(bt.getAttribute('class')=="exit"){
+                            temp.remove()
+                            
+
+                        }
+                }
+            ) 
                 localStorage.setItem('myCards', JSON.stringify(myCards));
   
                 

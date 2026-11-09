@@ -1,1 +1,4 @@
-const genereate = function(a){console.log(a)}
+let a = [1,1,1,1,1,1,1,1,1,1,1,1,1,]
+a.forEach((element,index)=>{
+    console.log(element,index)
+})

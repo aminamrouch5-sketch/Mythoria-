@@ -64,12 +64,8 @@
      <div class="flex justify-between" id="game" style="width: 1020px;height: 2000px;margin: auto;margin-top: 100px">
         <div style="background: rgba(22, 22, 36, 0.5);height: 1050px;width: 800px;border-radius: 20px;" class="card-m flex flex-col justify-between py-[40px] px-[40px]">
             <div class="flex flex-col">
-                <ul class="grid grid-cols-5 gap-4">
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
+                <ul class="grid grid-cols-5 gap-4" id="player2">
+                   
                 </ul>
                
             </div>
@@ -77,79 +73,75 @@
             <div style="height: 740px;margin-top: 20px;" class="flex flex-col justify-between arena-m ">
                 <!-- Grille 1 -->
                 <div class="grid grid-cols-5 gap-4">
-                    <div class="arena-cell">
+                    <div class="arena-cell deff-p2">
                     
                     </div>
-                    <div class="arena-cell">
+                    <div class="arena-cell deff-p2">
 
                     </div>
-                    <div class="arena-cell">
+                    <div class="arena-cell deff-p2">
 
                     </div>
-                    <div class="arena-cell">
+                    <div class="arena-cell deff-p2">
 
                     </div>
-                    <div class="arena-cell">
+                    <div class="arena-cell deff-p2">
 
                     </div>
-                    <div class="arena-cell">
+                    <div class="arena-cell atk-p2">
 
                     </div>
-                    <div class="arena-cell">
+                    <div class="arena-cell atk-p2">
 
                     </div>
-                    <div class="arena-cell">
+                    <div class="arena-cell atk-p2">
 
                     </div>
-                    <div class="arena-cell">
+                    <div class="arena-cell atk-p2">
 
                     </div>
-                    <div class="arena-cell">
+                    <div class="arena-cell atk-p2">
 
                     </div>
                 </div>
                 
-                <div class="grid grid-cols-5 gap-4 arena-m">
-                    <div class="arena-cell">
+                <div class="grid grid-cols-5 gap-4 arena-m" id="p1-cards">
+                    <div class="arena-cell atk-p1">
 
                     </div>
-                    <div class="arena-cell">
+                    <div class="arena-cell atk-p1">
 
                     </div>
-                    <div class="arena-cell">
+                    <div class="arena-cell atk-p1">
 
                     </div>
-                    <div class="arena-cell">b
+                    <div class="arena-cell atk-p1">
 
                     </div>
-                    <div class="arena-cell">
+                    <div class="arena-cell atk-p1">
 
                     </div>
-                    <div class="arena-cell">
+                    <div class="arena-cell deff-p1">
 
                     </div>
-                    <div class="arena-cell">
+                    <div class="arena-cell deff-p1">
 
                     </div>
-                    <div class="arena-cell">
+                    <div class="arena-cell deff-p1">
 
                     </div>
-                    <div class="arena-cell">
+                    <div class="arena-cell deff-p1">
 
                     </div>
-                    <div class="arena-cell">
+                    <div class="arena-cell deff-p1">
 
                     </div>
                 </div>
             </div>
         
             <div>
-                <ul class="grid grid-cols-5 card-m gap-4">
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
+                <ul class="grid grid-cols-5 card-m gap-4" id="player1">
+                   
                 </ul>
             </div>
             
@@ -161,7 +153,10 @@
             </div>
                 
             <div style="height: 200px;width: 300px;" class="text-center font-['Cinzel_Decorative'] text-3xl text-xl text-amber-400" id="p1">
-                 <img src="./assests/lightside.png" class="w-full h-full">
+                <div>
+                    <button>ATTACK</button>
+                </div>
+                 <img src="./assests/lightside.png" class="w-full h-full" id="drag-p1">
                  <span>CARD DRAG</span>
             </div>
         </div>

@@ -162,14 +162,28 @@ dragp1.addEventListener('click', (e) => {
 attackButton.addEventListener('click', (e) => {
     e.preventDefault();
     
-    
-    
     attack(playerAttack, botAttack, botDiffence, hp);
-    
-    
     botAttackFunction(botAttack, playerAttack, playerDefence, hp);
     
-    alert("Player HP:", hp.playerhp, "| Bot HP:", hp.boothp);
+    let hpModal = document.createElement('div');
+    hpModal.innerHTML = `
+        <div class="font-['Cinzel_Decorative'] fixed flex flex-col top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-6 rounded-xl shadow-lg w-[400px] h-[250px] text-center items-center justify-between z-50" style="background: rgba(95, 108, 77, 0.95); color: white; border: 2px solid white;">
+            <h2 class="text-2xl font-bold">Battle Status</h2>
+            <div class="flex justify-around w-full text-lg">
+                <span>Player HP: <br><strong>${hp.playerhp}</strong></span>
+                <span>Bot HP: <br><strong>${hp.boothp}</strong></span>
+            </div>
+            <button id="close-hp-modal" class="cursor-pointer" style="background: white; color: black; padding: 8px 25px; border-radius: 20px; font-weight: bold;">
+                Close
+            </button>
+        </div>
+    `;
+    
+    body.appendChild(hpModal);
+    
+    hpModal.querySelector('#close-hp-modal').addEventListener('click', () => {
+        hpModal.remove();
+    });
 });
 
 

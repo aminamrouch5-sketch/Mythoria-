@@ -1,7 +1,12 @@
 import { GenerateCards,getRandomInt} from './cards.js'
 import { monsters } from '../../data.js';
 import {spells} from '../../data.js';
-import { AddCarte,BotAddCarte  } from './game.js';
+import { AddCarte,dragCard,attack  } from './game.js';
+import {BotAddATK,BotDrag,BotDeff,botAttackFunction} from './boot.js'
+const hp = {
+            "playerhp":1000,
+            "boothp":1000
+           }
 const body          = document.querySelector('body')
 const startmenu     = document.querySelector('#start-menu')
 const main          = document.querySelector('main')
@@ -22,9 +27,10 @@ const playerAttack  = [null,null,null,null,null]
 const playerDefence = [null,null,null,null,null]
 const botAttack     = [null,null,null,null,null]
 const botDiffence   = [null,null,null,null,null]
-const p1Cards       = document.querySelectorAll(".p1-cards")
 const dragp1        = document.querySelector('#drag-p1')
+const attackButton = document.querySelector('#attack')
 game.style.display = "none";
+
 startmenu.addEventListener('click',(e)=>{
     e.preventDefault();
     if(!e.target.closest('button')) return;
@@ -94,8 +100,6 @@ startmenu.addEventListener('click',(e)=>{
             but.addEventListener('click', (e)=>{
                 sidemenu.remove()
                 game.style.display="";
-                // player generate card
-
 
             if(favcards.length<5){
                 if(mycards.length<5){
@@ -115,48 +119,58 @@ startmenu.addEventListener('click',(e)=>{
                     li.innerHTML = `<li>
                                         <img src="../.${element.img}" id="card-${element.id}" class="p1-cards">
                                     </li>`
-                    console.log(li)
                     playerone.appendChild(li)
                 })
                 botcards.forEach((element)=>{
                     let li = document.createElement('li')
                     li.innerHTML = `<li>
-                                        <img src="../.${element.img}" id="card-${element.id}" class="bot-cards"
+                                        <img src="../.${element.img}" id="card-${element.id}" class="bot-cards">
                                     </li>`
-                                    console.log(li)
                     playertwo.appendChild(li)
                 })
-                console.log(currentCards,botcards)
             })
-           
-
-
-        }
-    )
+        })
        }
-
     }
 )
 
-playerone.addEventListener('click',(e)=>{
-    AddCarte(e,playerAttack,playerDefence,monsters,body)
-    BotAddCarte(botAttack,botDiffence,monsters,getRandomInt)
+playerone.addEventListener('click', (e) => {
+    AddCarte(e, playerAttack, playerDefence, monsters, body);
     
-})
-dragp1.addEventListener('click',(e)=>{
-    if(currentCards.length>=5){
-        return
+    let botChoice = getRandomInt(1, 2);
+    if (botChoice === 1) {
+        BotAddATK(botAttack, botDiffence, monsters, getRandomInt);
+    } else {
+        BotDeff(botDiffence, monsters, getRandomInt);
+    }
+});
+
+dragp1.addEventListener('click', (e) => {
+    const p1Cards = document.querySelectorAll('.p1-cards');
+    if (p1Cards.length >= 5) {
+        return alert("you have 5 cards");
     }
     
-})
+    dragCard(mycards, currentCards, getRandomInt, playerone);
 
+    const botCardsList = document.querySelectorAll('.bot-cards');
+    if (botCardsList.length < 5) {
+        BotDrag(monsters, playertwo, getRandomInt);
+    }
+});
 
-
-
-
-
-
-
+attackButton.addEventListener('click', (e) => {
+    e.preventDefault();
+    
+    
+    
+    attack(playerAttack, botAttack, botDiffence, hp);
+    
+    
+    botAttackFunction(botAttack, playerAttack, playerDefence, hp);
+    
+    alert("Player HP:", hp.playerhp, "| Bot HP:", hp.boothp);
+});
 
 
 
